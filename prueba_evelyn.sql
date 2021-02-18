@@ -121,3 +121,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+INSERT INTO `productos` (`nombre_produto`, `descripcion_producto`, `imagen_precio`, `precio_producto`) 
+VALUES ('leche laive', 'leche evaporada laive', 'leche_laive.png', '3.5');
