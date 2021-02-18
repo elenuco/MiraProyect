@@ -48,4 +48,6 @@
 			mysqli_close($c1);
 			return $inf;
 		}
+		function add($c1,$nombre_produto,$descripcion_producto,$imagen_precio,$precio_producto){
+		}
 	}
