@@ -20,7 +20,7 @@
 								$inf.='"nombre_produto": "'.$row['nombre_produto'].'",';
 								$inf.='"descripcion_producto": "'.$row['descripcion_producto'].'",';
 								$inf.='"imagen_precio": "'.$row['imagen_precio'].'",';
-								$inf.='"precio_producto": "'.$row['precio_producto'].'",';
+								$inf.='"precio_producto": '.$row['precio_producto'].',';
 							$inf = substr($inf, 0, -1).'},';
 						}
 						mysqli_free_result($res);
