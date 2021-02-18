@@ -3,6 +3,7 @@
 	$rut='../';
 	$action='productos.php';
 	require_once($rut.'0code.php');
+	
 	require_once($rut.DIRACT.$action);
 	$inf = index($rut);
 

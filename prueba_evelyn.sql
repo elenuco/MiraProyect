@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pedidos` (
-  `Id_Pedido` int(11) NOT NULL,
-  `Nombre_Cliente` varchar(50) NOT NULL,
-  `Fecha_Pedido` datetime NOT NULL
+  `id_pedido` int(11) NOT NULL,
+  `nombre_cliente` varchar(50) NOT NULL,
+  `fecha_pedido` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -41,9 +41,9 @@ CREATE TABLE `pedidos` (
 --
 
 CREATE TABLE `pedidos_detalle` (
-  `Id_detalle` int(11) NOT NULL,
-  `Id_pedido` int(11) NOT NULL,
-  `Id_Producto` int(11) NOT NULL
+  `id_detalle` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -53,11 +53,11 @@ CREATE TABLE `pedidos_detalle` (
 --
 
 CREATE TABLE `productos` (
-  `Id_Producto` int(11) NOT NULL,
-  `Nombre_Produto` int(11) NOT NULL,
-  `Descripcion_Producto` int(11) NOT NULL,
-  `Imagen_Precio` varchar(200) NOT NULL,
-  `Precio_Producto` float NOT NULL
+  `id_producto` int(11) NOT NULL,
+  `nombre_produto` VARCHAR(250) NOT NULL,
+  `descripcion_producto` TEXT NOT NULL,
+  `imagen_precio` varchar(200) NOT NULL,
+  `precio_producto` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -68,21 +68,21 @@ CREATE TABLE `productos` (
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`Id_Pedido`);
+  ADD PRIMARY KEY (`id_pedido`);
 
 --
 -- Indices de la tabla `pedidos_detalle`
 --
 ALTER TABLE `pedidos_detalle`
-  ADD PRIMARY KEY (`Id_detalle`),
-  ADD KEY `Id_pedido` (`Id_pedido`,`Id_Producto`),
-  ADD KEY `Id_Producto` (`Id_Producto`);
+  ADD PRIMARY KEY (`id_detalle`),
+  ADD KEY `id_pedido` (`id_pedido`,`id_producto`),
+  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`Id_Producto`);
+  ADD PRIMARY KEY (`id_producto`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -92,19 +92,19 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `Id_Pedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos_detalle`
 --
 ALTER TABLE `pedidos_detalle`
-  MODIFY `Id_detalle` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `Id_Producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -114,8 +114,8 @@ ALTER TABLE `productos`
 -- Filtros para la tabla `pedidos_detalle`
 --
 ALTER TABLE `pedidos_detalle`
-  ADD CONSTRAINT `pedidos_detalle_ibfk_1` FOREIGN KEY (`Id_Producto`) REFERENCES `productos` (`Id_Producto`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `pedidos_detalle_ibfk_2` FOREIGN KEY (`Id_pedido`) REFERENCES `pedidos` (`Id_Pedido`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `pedidos_detalle_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `pedidos_detalle_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
