@@ -28,6 +28,7 @@
 				<table class="table table-hover table-bordered">
 					<thead>
 						<tr>
+							<th></th>
 							<th>ID</th>
 							<th>Nombre</th>
 							<th>Descripción</th>
@@ -51,7 +52,8 @@
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	    	<form id="formUpload" method="POST" action="https://localhost/MiraProyect/api/productos/new/index.php" enctype="multipart/form-data">
+	    	<!--<form id="formUpload" method="POST" action="https://localhost/MiraProyect/api/productos/new/index.php" enctype="multipart/form-data">-->
+	    	<form id="formUpload" method="POST" enctype="multipart/form-data">
 		      <div class="modal-header">
 		        <h5 class="modal-title" id="exampleModalLabel">Nuevo Producto</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -87,6 +89,7 @@
 	<script>
 		function listar(){
 			let html;
+			let count=1;
 
 			$.ajax({
 				url: "https://localhost/MiraProyect/api/productos/",
@@ -97,12 +100,19 @@
 					html += '<tr>';
 						$.each(value, function( index2, value2 ) {
 							//console.log( index2 + ": " + value2 );
+							if (count==1) {
+								html += '<td><a href="detalle/?p='+ value2+'" class="btn btn-outline-warning">Detalle</a></td>';
+							}
 							if (index2 == 'imagen_precio') {
 								html += '<td><img src="../<?= $rut; ?>img/'+value2+'" alt="'+value2+'" class="img-thumbnail" style="height: 90px !important;"></td>';
+							}else if(index2 == 'descripcion_producto'){
+								html += '<td>'+atob(value2)+'</td>';
 							}else{
 								html += '<td>'+ value2+'</td>';
 							}
+							count++;
 						});
+						count=1;
 					html += '</tr>';
 				});
 				$("#result").html(html);
@@ -111,15 +121,16 @@
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
-		/*
 		$("#formUpload").on('submit', function(e){
 			$("#exampleModal").modal('hide');
 			e.preventDefault();
 			$.ajax({
 				url: "https://localhost/MiraProyect/api/productos/new/index.php",
-				method: "POST",
-				type: 'multipart/form-data',
+				type: 'POST',
+				//type: 'multipart/form-data',
+				//method: "POST",
 				data: new FormData(this),
+            	contentType: false,
 				cache: false,
 				processData:false,
 			}).done(function(data) {
@@ -134,7 +145,6 @@
 			});
 			return false;
 		});
-		*/
 	</script>
 </body>
 </html>

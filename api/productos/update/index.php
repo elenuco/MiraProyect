@@ -4,9 +4,11 @@
 	$action='productos.php';
 	require_once($rut.'0code.php');
 
-	if (isset($_POST['nombre_produto'])) {
-		function validar($nombre_produto,$precio_producto){
+	if (isset($_POST['id_producto'])) {
+		function validar($id_producto,$nombre_produto,$precio_producto){
 			$er=1;
+			if (is_null($id_producto)) { $er=0; }
+			if ($id_producto <= 0) { $er=0; }
 			if (is_null($nombre_produto)) { $er=0; }
 			if (strlen($nombre_produto) <= 3) { $er=0; }
 			if (is_null($precio_producto)) { $er=0; }
@@ -15,6 +17,7 @@
 		}
 
 		$url = $_POST['url'];
+		$id_producto = $_POST['id_producto'];
 		$nombre_produto = $_POST['nombre_produto'];
 		$descripcion_producto = $_POST['descripcion_producto'];
 
@@ -27,15 +30,16 @@
 
 		$precio_producto = $_POST['precio_producto'];
 
-		if (validar($nombre_produto,$precio_producto) == 1) {
+		if (strlen($imagen_precio) < 16) {
+			$imagen_precio = $_POST['act_imagen_precio'];
+		}
+
+		if (validar($id_producto,$nombre_produto,$precio_producto) == 1) {
 			require_once($rut.DIRACT.$action);
-			$inf = nuevo($rut,$nombre_produto,$descripcion_producto,$imagen_precio,$precio_producto);
+			$inf = editar($rut,$id_producto,$nombre_produto,$descripcion_producto,$imagen_precio,$precio_producto);
 
 			header("Content-Type: application/json");
 			echo $inf;
-
-			header("Location: ".$url);
-			exit();
 		}else{
 			header("Content-Type: application/json");
 			echo '[{';
