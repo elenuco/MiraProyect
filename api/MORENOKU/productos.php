@@ -115,14 +115,15 @@
 			mysqli_close($c1);
 			return $inf;
 		}
-		function drop($c1,$pid,$drop_at){
+		function drop($c1,$pid){
 			$inf=null;$er=1;
-			$sql="UPDATE ".$this->table." SET drop_at='".$drop_at."', status=2 WHERE ".$this->table_id."=".$pid." ;";
+			$sql="DELETE FROM ".$this->table." WHERE ".$this->table_id."=".$pid." ;";
 			$res = mysqli_query($c1,$sql) OR $_SESSION['Mysqli_Error'] = (mysqli_error($c1));
 			if ($res) {
-				$inf='drop';
+				$inf='[{"code":202, "mensaje": "Producto Eliminado Correctamente."}]';
 			}else{
-				$inf='nodrop';
+				$inf='[{"code":404, "mensaje": "Error: '.$_SESSION['Mysqli_Error'].'."}]';
+
 			}
 
 			mysqli_close($c1);

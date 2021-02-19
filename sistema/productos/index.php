@@ -100,11 +100,19 @@
 					html += '<tr>';
 						$.each(value, function( index2, value2 ) {
 							//console.log( index2 + ": " + value2 );
+
 							if (count==1) {
-								html += '<td><a href="detalle/?p='+ value2+'" class="btn btn-outline-warning">Detalle</a></td>';
+								html += '<td>';
+								html += '<a href="detalle/?p='+ value2+'" class="btn btn-outline-warning">Detalle</a></td> ';
+								html += '</td>';
 							}
 							if (index2 == 'imagen_precio') {
 								html += '<td><img src="../<?= $rut; ?>img/'+value2+'" alt="'+value2+'" class="img-thumbnail" style="height: 90px !important;"></td>';
+							}else if(index2 == 'id_producto'){
+								html += '<td>';
+									html += value2+' ';
+									html += '<a href="#" id="btnEliminar" onclick="eliminar('+value2+')" class="btn btn-outline-danger">Eliminar</a>';
+								html += '</td>';
 							}else if(index2 == 'descripcion_producto'){
 								html += '<td>'+atob(value2)+'</td>';
 							}else{
@@ -145,6 +153,20 @@
 			});
 			return false;
 		});
+	</script>
+	<script>
+		function eliminar(id){
+			$.ajax({
+				type: 'POST',
+				url: "https://localhost/MiraProyect/api/productos/delete/index.php",
+				data: { drop: "drop", id_producto: id },
+			}).done(function(data) {
+				console.log(data);
+				listar();
+				return false;
+			});
+			return false;
+		};
 	</script>
 </body>
 </html>

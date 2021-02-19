@@ -56,3 +56,16 @@
 
 		return $inf;
 	}
+	function eliminar($rut,$pid){
+		global $dbs,$cl1;
+		require_once($rut.DIRMOR.$dbs.'.php');
+		require_once($rut.DIRMOR.$cl1.'.php');
+		//require_once('../MORENOKU/productos.php');
+		$_dbs = new $dbs();
+		$_cl1 = new $cl1();
+		//$_dbs = new database();
+
+		$inf = $_cl1->drop($_dbs->connect(),$pid);
+
+		return $inf;
+	}
