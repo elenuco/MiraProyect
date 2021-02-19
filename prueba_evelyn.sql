@@ -125,3 +125,11 @@ COMMIT;
 
 INSERT INTO `productos` (`nombre_produto`, `descripcion_producto`, `imagen_precio`, `precio_producto`) 
 VALUES ('leche laive', 'leche evaporada laive', 'leche_laive.png', '3.5');
+INSERT INTO `productos` (`nombre_produto`, `descripcion_producto`, `imagen_precio`, `precio_producto`) 
+VALUES ('carne la vaca', 'carne la vaca', '20210218202905IMG_1593740264565.jpg', '5.5');
+INSERT INTO `productos` (`nombre_produto`, `descripcion_producto`, `imagen_precio`, `precio_producto`) 
+VALUES ('queso la vaca', 'queso la vaca', '20210218202905IMG_1593740264565.jpg', '2.5');
+INSERT INTO `productos` (`nombre_produto`, `descripcion_producto`, `imagen_precio`, `precio_producto`) 
+VALUES ('crema la vaca', 'crema la vaca', '20210218202905IMG_1593740264565.jpg', '5.5');
+INSERT INTO `productos` (`nombre_produto`, `descripcion_producto`, `imagen_precio`, `precio_producto`) 
+VALUES ('pollo Pío', 'carne de pollo', '20210218202905IMG_1593740264565.jpg', '5.5');
