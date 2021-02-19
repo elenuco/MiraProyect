@@ -117,7 +117,7 @@
 			e.preventDefault();
 			$.ajax({
 				url: "https://localhost/MiraProyect/api/productos/new/index.php",
-				method: 'POST',
+				method: "POST",
 				type: 'multipart/form-data',
 				data: new FormData(this),
 				cache: false,
